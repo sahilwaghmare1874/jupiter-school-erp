@@ -1,0 +1,353 @@
+/* ==========================================================================
+   JUPITER ENGLISH MEDIUM SCHOOL — ENTERPRISE DESIGN SYSTEM v2.0
+   Shendre, Satara, Maharashtra
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap');
+
+:root {
+  /* Core Brand Colors */
+  --primary-navy: #0F2027;
+  --secondary-navy: #203A43;
+  --accent-blue: #2C5364;
+  --primary-gold: #D4AF37;
+  --gold-hover: #B89628;
+  --maroon-accent: #772030;
+  --emerald-accent: #059669;
+
+  /* Background Tokens */
+  --bg-primary: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+
+  /* Text Tokens */
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+
+  /* Shadow System */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 24px rgba(15,32,39,0.12);
+  --shadow-gold: 0 8px 20px rgba(212,175,55,0.25);
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* ── Dark Mode ──────────────────────────────────────────────────────── */
+body.dark-mode {
+  --bg-primary: #0B1120;
+  --bg-surface: #1E293B;
+  --bg-card: #151E32;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-color: #334155;
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Base Styles ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html { 
+  scroll-behavior: smooth; 
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.7;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+a { transition: all 0.25s ease; }
+
+img { max-width: 100%; height: auto; }
+
+/* ── Glassmorphism Cards ─────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .glass-card {
+  background: rgba(21, 30, 50, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Standard Card ───────────────────────────────────────────────────── */
+.spm-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.spm-card:hover { box-shadow: var(--shadow-md); }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #E6C258 100%);
+  color: #0F2027;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 0.65rem 1.6rem;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  text-align: center;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #B89628 0%, #D4AF37 100%);
+  color: #0F2027;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(212,175,55,0.45);
+}
+
+.btn-gold:disabled {
+  opacity: 0.5;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn-navy {
+  background: linear-gradient(135deg, #0F2027 0%, #203A43 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 0.65rem 1.6rem;
+  transition: all 0.3s ease;
+  white-space: normal;
+  text-align: center;
+}
+
+.btn-navy:hover {
+  color: var(--primary-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(15,32,39,0.35);
+}
+
+.btn-outline-gold {
+  border: 2px solid var(--primary-gold);
+  color: var(--primary-gold);
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  transition: all 0.3s ease;
+  white-space: normal;
+  text-align: center;
+}
+
+.btn-outline-gold:hover {
+  background: var(--primary-gold);
+  color: #0F2027;
+  transform: translateY(-2px);
+}
+
+/* ── Animations ──────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────── */
+.badge-spm {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--primary-gold);
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Section Title Pattern ───────────────────────────────────────────── */
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 3.5rem;
+
+  .subtitle {
+    color: var(--primary-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+  }
+
+  .divider {
+    width: 72px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--maroon-accent), var(--primary-gold));
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────── */
+.bg-surface { background-color: var(--bg-surface) !important; }
+.bg-primary-navy { background: #0F2027 !important; }
+.text-gold { color: var(--primary-gold) !important; }
+
+.max-w-600 { max-width: 600px; }
+.max-w-800 { max-width: 800px; }
+
+/* ── Table Dark Mode & Responsiveness ────────────────────────────────── */
+body.dark-mode .table {
+  color: var(--text-main);
+}
+
+body.dark-mode .table-hover > tbody > tr:hover > * {
+  background-color: rgba(255,255,255,0.04);
+}
+
+/* ── Form Controls Dark Mode ─────────────────────────────────────────── */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  background-color: var(--bg-card);
+  border-color: var(--primary-gold);
+  color: var(--text-main);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+}
+
+/* ── Progress Bars ───────────────────────────────────────────────────── */
+.progress { border-radius: 99px; }
+.progress-bar { border-radius: 99px; }
+
+/* ── News Ticker ─────────────────────────────────────────────────────── */
+.news-ticker .ticker-content {
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Global Mobile Responsiveness ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .container, .container-fluid {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+  }
+  .section-title-wrap {
+    margin-bottom: 2rem;
+  }
+  .section-title-wrap .title { 
+    font-size: 1.5rem; 
+  }
+  .display-3 { 
+    font-size: 1.65rem !important; 
+    line-height: 1.2 !important;
+  }
+  .display-4 { 
+    font-size: 1.5rem !important; 
+    line-height: 1.2 !important;
+  }
+  .display-5 {
+    font-size: 1.4rem !important;
+    line-height: 1.2 !important;
+  }
+  .lead {
+    font-size: 0.95rem !important;
+  }
+  .spm-card {
+    padding: 1.25rem;
+  }
+  .btn-gold, .btn-navy, .btn-outline-gold {
+    padding: 0.55rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .badge {
+    white-space: normal !important;
+    text-align: left;
+    max-width: 100%;
+    display: inline-block;
+  }
+}
+

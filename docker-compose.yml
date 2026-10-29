@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: spm_db
+    environment:
+      POSTGRES_DB: spm_school_db
+      POSTGRES_USER: spm_user
+      POSTGRES_PASSWORD: spm_password_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: spm_backend
+    environment:
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=spm_school_db
+      - DB_USER=spm_user
+      - DB_PASSWORD=spm_password_2026
+      - DB_HOST=db
+      - DB_PORT=5432
+      - SECRET_KEY=prod-secret-key-spm-school-2026
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py seed_data &&
+             gunicorn --bind 0.0.0.0:8000 school_erp.wsgi:application"
+
+  frontend:
+    build: ./frontend
+    container_name: spm_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
